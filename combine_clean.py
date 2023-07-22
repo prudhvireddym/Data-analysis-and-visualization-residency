@@ -63,5 +63,4 @@ def clean_merged(merged_csv):
     data_cleaned.to_csv('csvs/merged_cleaned_country.csv', index=False)
 
 
-
 clean_merged('csvs/merged_data.csv')
