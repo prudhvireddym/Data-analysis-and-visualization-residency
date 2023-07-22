@@ -1,12 +1,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_theme(style="whitegrid")
 
+# Set the style and color palette
+sns.set_theme(style="whitegrid")
+color_palette = "Set3"
 
 # Load the cleaned data
 data_cleaned = pd.read_csv('csvs/merged_cleaned_country.csv')
-
 
 # Explode the 'genre' column into multiple rows
 data_exploded = data_cleaned.assign(genre=data_cleaned['genre'].str.split(', ')).explode('genre')
@@ -15,7 +16,7 @@ data_exploded = data_cleaned.assign(genre=data_cleaned['genre'].str.split(', '))
 plt.figure(figsize=(12, 6))
 sns.boxplot(data=data_exploded, x='rating', y='genre', 
             order=data_exploded['genre'].value_counts().index[:10],
-            palette="vlag")
+            palette=color_palette)
 
 plt.title(f'Boxplot of Rating vs Genre (Total: {len(data_exploded)} Genres)', fontsize=20)
 plt.xlabel('Rating', fontsize=15)
