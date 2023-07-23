@@ -35,7 +35,7 @@ data_imdb.to_csv('csvs/data_imdb_Best_match_column.csv', index=False)
 
 
 #Add the columns from Netflix data to IMDb data
-for idx,col in enumerate(['country', 'show_id','type']):
+for idx,col in enumerate(['country', 'show_id','type','date_added']):
     data_imdb[col] = data_imdb['best_match'].map(netflix_dict).apply(lambda x: x[col] if isinstance(x, dict) else None)
 
 data_imdb.to_csv('csvs/data_imdb__initial_combined.csv', index=False)
